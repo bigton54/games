@@ -1,0 +1,66 @@
+<!Doctype html>
+<html lang="en-us">
+<head>
+<meta charset="UTF-8" />
+<title>  Rock paper Scissors</title>
+</head>
+<body>
+    <div id="game">
+        <p>Press r, p, or s to begin game!</p>
+    </div>
+<script type= "text/javascript">
+    // our array of choices.
+    var computerChoices = ["r","s","p"];
+    
+    //variables for tracking the wins, losses and ties, they all begin at 0.
+    var wins =0;
+    var losses =0;
+    var ties =0;
+
+    //when the user presses a key, it will run the following function.
+    document.onkeyup = function(event)  {
+
+        //this determines which key was pressed
+        var userGuess = event.key;
+        
+        //set the cumputers guess to random choice from the computerChoice array.
+        var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
+        
+        //when the user presses "r", "p", "s", run the game logic
+        if ((userGuess === "r") ||(userGuess === "p") ||(userGuess ==="s" )) {
+
+            //this logic determines the win/loss/tie outcome of the game and incrememnts the corresponding game counter.
+            if ((userGuess === "r") && (computerGuess === "s")) {wins++;}
+            
+
+            else if ((userGuess === "r") && (computerGuess === "p")) {losses++;}
+            
+            else if ((userGuess === "s") && (computerGuess === "r")) {losses++;}
+
+            else if ((userGuess === "s") && (computerGuess === "p")) {wins++;}
+
+            else if ((userGuess === "p") && (computerGuess === "r")) {wins++;}
+
+            else if ((userGuess === "p") && (computerGuess === "s")) {losses++;}
+
+            else if (userGuess== computerGuess) {ties++;}
+            }
+          document.clear();  
+        //Injecting the HTML we just created into our div and updating the game info on our page
+      
+         document.write("<br><br>"+"<p>wins:</p>"+wins+"<br>"+"<p>losses:</p>"+losses+"<br>"+"<p>ties:</p>"+ties+ "<br>");  
+            
+    //Using JS i'm creating a P tag statement (like html <p>)
+    // var pTag = document.createElement("p");
+    // var text = document.createTextNode(
+    //         "wins:"+ wins +"<br>" + "losses:" + losses +"<br>" + "ties:" + ties +"<br>"
+    //         );
+    // pTag.appendChild(text);
+        
+      
+    };
+
+
+</script>
+</body>
+</html
